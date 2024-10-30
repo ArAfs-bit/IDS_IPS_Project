@@ -98,5 +98,7 @@ This project highlights the importance of IDS/IPS in protecting networks from po
 
 ## Author
 Arafuzzaman Ovhe
+
 Email: arafovhe@outlook.com
+
 GitHub: ArAfs-bit
