@@ -19,7 +19,7 @@ This project demonstrates the setup and configuration of an Intrusion Detection/
 ```yaml
 vars:
   address-groups:
-    HOME_NET: "[192.168.1.0/24]"  # Update to your actual network range
+    HOME_NET: "[192.168.1.0/24]"
     EXTERNAL_NET: "!$HOME_NET"
 
 outputs:
@@ -37,8 +37,8 @@ outputs:
         - tls
   - file-store:
       enabled: yes
-      directory: "/Users/av/Desktop/IDS_IPS_Project/logs"  # Specify your log directory
-      filename: file-store.log  # Specify the log file
+      directory: "/Users/av/Desktop/IDS_IPS_Project/logs"
+      filename: file-store.log
 ```
 
 ## Usage
