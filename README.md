@@ -4,31 +4,87 @@
 This project demonstrates the setup and configuration of an Intrusion Detection/Prevention System (IDS/IPS) using Suricata. The goal is to monitor network traffic for malicious activities and enhance the security posture of the environment.
 
 ## Prerequisites
-- **Suricata (version 7.0.7)** installed on your system.
+- Suricata (version 7.0.7) installed on your system.
 - Basic understanding of network protocols and cybersecurity principles.
 
 ## Installation
 1. Download the Suricata installation package (suricata-7.0.7.tar.gz).
-2. Extract the package and follow the GUI installation instructions specific to your operating system.
+2. Extract the package and follow the installation instructions specific to your operating system.
 
 ## Configuration
-- Place your Suricata configuration files in the `config` folder.
-- Modify the configuration according to your network settings.
+- The configuration file is located in the `config` folder. 
+- Modify the `suricata.yaml` file according to your network settings. 
+
+### Key Configuration Snippet
+```yaml
+vars:
+  address-groups:
+    HOME_NET: "[192.168.1.0/24]"  # Update to your actual network range
+    EXTERNAL_NET: "!$HOME_NET"
+
+outputs:
+  - fast:
+      enabled: yes
+      filename: fast.log
+      append: yes
+  - eve-log:
+      enabled: yes
+      filename: eve.json
+      types:
+        - alert
+        - http
+        - dns
+        - tls
+  - file-store:
+      enabled: yes
+      directory: "/Users/av/Desktop/IDS_IPS_Project/logs"  # Specify your log directory
+      filename: file-store.log  # Specify the log file
+```
 
 ## Usage
-- Start Suricata using the GUI option in your operating system.
-- Monitor traffic logs that will be generated in the `logs` folder.
 
-## Screenshots
-Here are some screenshots of the IDS/IPS in action:
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
+### Start Suricata in IDS Mode
+To start Suricata in IDS mode, run the following command in your terminal:
 
-## Conclusion
-This project highlights the importance of IDS/IPS in protecting networks from potential threats. 
+```bash
+sudo ./suricata -c ~/Desktop/IDS_IPS_Project/config/suricata.yaml -i en0
+```
+## Generate Network Traffic
+You can generate network traffic using tools like curl to visit various websites or run scans to trigger alerts. For example, you can use:
+```bash
+curl http://testmynids.org/uid/index.html
+```
+## Alerts
+Alerts generated during testing will be logged in eve.json and fast.log located in the logs folder.
 
-## Author
-Arafuzzaman Ovhe  
-Email: [arafovhe@outlook.com](mailto:arafovhe@outlook.com)  
-GitHub: [ArAfs-bit](https://github.com/ArAfs-bit)
+## Example Alert
+Here’s an example of an alert that might be logged:
+
+```json
+{
+  "timestamp": "2024-10-30T02:53:28.803418-0400",
+  "flow_id": 375194478544131,
+  "in_iface": "en0",
+  "event_type": "alert",
+  "src_ip": "199.59.243.227",
+  "src_port": 80,
+  "dest_ip": "192.168.1.233",
+  "dest_port": 50221,
+  "proto": "TCP",
+  "alert": {
+    "action": "allowed",
+    "gid": 1,
+    "signature_id": 2221010,
+    "rev": 1,
+    "signature": "SURICATA HTTP unable to match response to request",
+    "category": "Generic Protocol Command Decode",
+    "severity": 3
+  }
+}
+```
+Screenshots
+![Suricata Running](screenshots/Screen Shot 2024-10-30 at 1.38.45 AM.png)
+
+Note: The warning about "counters: stats are enabled but no loggers are active" indicates that while Suricata can log alerts, additional configurations for logging statistics are not enabled. This does not affect the primary functionality of the IDS.
+
 
