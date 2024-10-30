@@ -11,13 +11,6 @@ This project demonstrates the setup and configuration of an Intrusion Detection/
 1. Downloaded the Suricata installation package (suricata-7.0.7.tar.gz).
 2. Extracted the package and followed the installation instructions specific to the operating system.
 
-## Suricata Running in IDS Mode
-Below is a screenshot showing Suricata running in IDS mode. 
-
-![Suricata Running](screenshots/Suricata_Running.png)
-
-**Note**: The warning about "counters: stats are enabled but no loggers are active" indicates that while Suricata can log alerts, additional configurations for logging statistics are not enabled. This does not affect the primary functionality of the IDS.
-
 ## Configuration
 - The configuration file is located in the `config` folder. 
 - Modified the `suricata.yaml` file according to my network settings. 
@@ -56,7 +49,14 @@ To start Suricata in IDS mode, ran the following command in my terminal:
 ```bash
 sudo ./suricata -c ~/Desktop/IDS_IPS_Project/config/suricata.yaml -i en0
 ```
-## Generateed Network Traffic
+## Suricata Running in IDS Mode
+Below is a screenshot showing Suricata running in IDS mode. 
+
+![Suricata Running](screenshots/Suricata_Running.png)
+
+**Note**: The warning about "counters: stats are enabled but no loggers are active" indicates that while Suricata can log alerts, additional configurations for logging statistics are not enabled. This does not affect the primary functionality of the IDS.
+
+## Generated Network Traffic
 Generated network traffic using tools like curl to visit various websites or run scans to trigger alerts. For example, I used:
 ```bash
 curl http://testmynids.org/uid/index.html
