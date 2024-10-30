@@ -14,7 +14,7 @@ This project demonstrates the setup and configuration of an Intrusion Detection/
 ## Suricata Running in IDS Mode
 Below is a screenshot showing Suricata running in IDS mode. 
 
-![Suricata Running](screenshots/Screen Shot 2024-10-30 at 1.38.45 AM.png)
+![Suricata Running](screenshots/Suricata_Running.png)
 
 **Note**: The warning about "counters: stats are enabled but no loggers are active" indicates that while Suricata can log alerts, additional configurations for logging statistics are not enabled. This does not affect the primary functionality of the IDS.
 
