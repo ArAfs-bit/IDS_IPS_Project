@@ -1,0 +1,48 @@
+# Suricata Configuration File
+
+# YAML Version
+%YAML 1.1
+---
+
+# Global Settings
+vars:
+  address-groups:
+    HOME_NET: "[192.168.1.0/24]"
+    EXTERNAL_NET: "!$HOME_NET"
+
+# Output Settings
+outputs:
+  - fast:
+      enabled: yes
+      filename: fast.log
+      append: yes
+  - eve-log:
+      enabled: yes
+      filename: eve.json
+      types:
+        - alert
+        - http
+        - dns
+        - tls
+  - stats:
+      enabled: yes
+      filename: stats.log  # Log file for statistics
+      print: yes  
+# Log Directory
+default-log-dir: "/Users/av/Desktop/IDS_IPS_Project/logs"
+
+# Network Interface Configuration
+af-packet:
+  - interface: en0
+
+# Rule Files
+rule-files:
+  - /Users/av/downloads/suricata-7.0.7/rules/files.rules
+  - /Users/av/downloads/suricata-7.0.7/rules/ftp-events.rules
+  - /Users/av/downloads/suricata-7.0.7/rules/http-events.rules
+  - /Users/av/downloads/suricata-7.0.7/rules/http2-events.rules
+  - /Users/av/downloads/suricata-7.0.7/rules/smtp-events.rules
+  - /Users/av/downloads/suricata-7.0.7/rules/ssh-events.rules
+  - /Users/av/downloads/suricata-7.0.7/rules/dns-events.rules
+  - /Users/av/downloads/suricata-7.0.7/rules/tls-events.rules
+  - /Users/av/downloads/suricata-7.0.7/rules/custom.rules
