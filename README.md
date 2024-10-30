@@ -60,7 +60,7 @@ Below is a screenshot showing Suricata running in IDS mode.
 The rules folder contains various Suricata rule files that help detect and respond to network threats. Here’s a brief overview of what each file does:
 ```graphql
 rules/
-├── custom.rules          # Your own custom rules for specific alerts
+├── custom.rules          # Custom rules for specific alerts
 ├── files.rules           # Rules for detecting file types like JPG and PDF
 ├── ftp-events.rules      # Rules for monitoring FTP traffic
 ├── http-events.rules     # Rules for detecting HTTP traffic issues
@@ -71,7 +71,7 @@ rules/
 ```
 ## Key Rules Examples
 custom.rules: Contains alerts for specific file types.
-files.rules: Monitors for files with specific extensions like JPG and PDF.
+files.rules: Monitors files with specific extensions like JPG and PDF.
 
 
 ## Generated Network Traffic
