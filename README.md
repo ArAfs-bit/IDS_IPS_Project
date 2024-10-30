@@ -56,6 +56,24 @@ Below is a screenshot showing Suricata running in IDS mode.
 
 **Note**: The warning about "counters: stats are enabled but no loggers are active" indicates that while Suricata can log alerts, additional configurations for logging statistics are not enabled. This does not affect the primary functionality of the IDS.
 
+## Rules
+The rules folder contains various Suricata rule files that help detect and respond to network threats. Here’s a brief overview of what each file does:
+```graphql
+rules/
+├── custom.rules          # Your own custom rules for specific alerts
+├── files.rules           # Rules for detecting file types like JPG and PDF
+├── ftp-events.rules      # Rules for monitoring FTP traffic
+├── http-events.rules     # Rules for detecting HTTP traffic issues
+├── http2-events.rules    # Rules for monitoring HTTP/2 traffic
+├── smtp-events.rules     # Rules for monitoring SMTP email traffic
+├── ssh-events.rules      # Rules for detecting SSH access attempts
+└── dns-events.rules      # Rules for monitoring DNS queries
+```
+## Key Rules Examples
+custom.rules: Contains alerts for specific file types.
+files.rules: Monitors for files with specific extensions like JPG and PDF.
+
+
 ## Generated Network Traffic
 Generated network traffic using tools like curl to visit various websites or run scans to trigger alerts. For example, I used:
 ```bash
