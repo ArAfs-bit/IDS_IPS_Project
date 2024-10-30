@@ -71,6 +71,7 @@ rules/
 ```
 ## Key Rules Examples
 custom.rules: Contains alerts for specific file types.
+
 files.rules: Monitors files with specific extensions like JPG and PDF.
 
 
