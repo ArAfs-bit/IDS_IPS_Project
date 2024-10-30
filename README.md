@@ -4,16 +4,23 @@
 This project demonstrates the setup and configuration of an Intrusion Detection/Prevention System (IDS/IPS) using Suricata. The goal is to monitor network traffic for malicious activities and enhance the security posture of the environment.
 
 ## Prerequisites
-- Suricata (version 7.0.7) installed on your system.
+- Suricata (version 7.0.7) was installed.
 - Basic understanding of network protocols and cybersecurity principles.
 
 ## Installation
-1. Download the Suricata installation package (suricata-7.0.7.tar.gz).
-2. Extract the package and follow the installation instructions specific to your operating system.
+1. Downloaded the Suricata installation package (suricata-7.0.7.tar.gz).
+2. Extracted the package and followed the installation instructions specific to the operating system.
+
+## Suricata Running in IDS Mode
+Below is a screenshot showing Suricata running in IDS mode. 
+
+![Suricata Running](screenshots/Screen Shot 2024-10-30 at 1.38.45 AM.png)
+
+**Note**: The warning about "counters: stats are enabled but no loggers are active" indicates that while Suricata can log alerts, additional configurations for logging statistics are not enabled. This does not affect the primary functionality of the IDS.
 
 ## Configuration
 - The configuration file is located in the `config` folder. 
-- Modify the `suricata.yaml` file according to your network settings. 
+- Modified the `suricata.yaml` file according to my network settings. 
 
 ### Key Configuration Snippet
 ```yaml
@@ -43,14 +50,14 @@ outputs:
 
 ## Usage
 
-### Start Suricata in IDS Mode
-To start Suricata in IDS mode, run the following command in your terminal:
+### Started Suricata in IDS Mode
+To start Suricata in IDS mode, ran the following command in my terminal:
 
 ```bash
 sudo ./suricata -c ~/Desktop/IDS_IPS_Project/config/suricata.yaml -i en0
 ```
-## Generate Network Traffic
-You can generate network traffic using tools like curl to visit various websites or run scans to trigger alerts. For example, you can use:
+## Generateed Network Traffic
+Generated network traffic using tools like curl to visit various websites or run scans to trigger alerts. For example, I used:
 ```bash
 curl http://testmynids.org/uid/index.html
 ```
@@ -82,11 +89,14 @@ Here’s an example of an alert that might be logged:
   }
 }
 ```
-## Screenshots
-![Suricata Running](screenshots/Suricata_Running.png)
-
-Note: The warning about "counters: stats are enabled but no loggers are active" indicates that while Suricata can log alerts, additional configurations for logging statistics are not enabled. This does not affect the primary functionality of the IDS.
+## Screenshot
 
 ![Alert Detected](screenshots/Alert_Detected.png)
 
+## Conclusion
+This project highlights the importance of IDS/IPS in protecting networks from potential threats. It showcases practical skills in configuring Suricata and generating network alerts.
 
+## Author
+Arafuzzaman Ovhe
+Email: arafovhe@outlook.com
+GitHub: ArAfs-bit
